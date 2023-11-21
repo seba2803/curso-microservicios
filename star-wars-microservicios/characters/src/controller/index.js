@@ -1,3 +1,7 @@
+//catchedAsync es una funcion de orden superior
+const { catchedAsync } = require('../utils');
+
 module.exports = {
-  getCharacter: require('./getCharacters'),
+  getCharacter: catchedAsync(require('./getCharacters')),
+  createCharacter: catchedAsync(require('./createCharacter')),
 };
