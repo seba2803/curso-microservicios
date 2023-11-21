@@ -1,3 +1,6 @@
+// catchedAsync es una funcion de orden mayor
+const { catchedAsync } = require('../utils');
+
 module.exports = {
-  getPlanets: require('./getPlanets'),
+  getPlanets: catchedAsync(require('./getPlanets')),
 };
