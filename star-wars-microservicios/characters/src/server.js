@@ -5,7 +5,7 @@ const server = express();
 
 server.use(morgan('dev'));
 server.use(express.json());
-server.use(require('./routes'));
+server.use('/characters', require('./routes'));
 
 // por si no se accede a ninguna ruta existente en la aplicación
 server.use('*', (req, res) => {
