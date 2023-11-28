@@ -8,6 +8,9 @@ module.exports = (req, res, next) => {
   // keys enviadas por body
   const keysBody = Object.keys(props);
 
+  if (!keysBody.length)
+    throw new ClientError('Debe proporcionar las propiedades requeridas', 400);
+
   switch (model) {
     case 'Character':
       // keys del esquema Character

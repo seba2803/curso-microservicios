@@ -6,7 +6,12 @@ const router = Router();
 
 router.get('/:model', middleware.validateModel, controllers.getAllInfo);
 
-router.get('/:model/:id', middleware.validateModel, controllers.getOnlyOne);
+router.get(
+  '/:model/:id',
+  middleware.validateModel,
+  middleware.validateId,
+  controllers.getOnlyOne
+);
 
 router.post(
   '/:model',
