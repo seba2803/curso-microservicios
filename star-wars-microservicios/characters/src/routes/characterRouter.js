@@ -4,12 +4,10 @@ const middlewares = require('../middlewares');
 
 const characterRouter = Router();
 
-characterRouter.get('/', controller.getCharacter);
+characterRouter.get('/', controller.getAllCharacters);
 
-characterRouter.post(
-  '/',
-  middlewares.characterValidation,
-  controller.createCharacter
-);
+characterRouter.get('/:id', middlewares.validateId, controller.getCharacter);
+
+characterRouter.post('/', controller.createCharacter);
 
 module.exports = characterRouter;

@@ -1,10 +1,17 @@
-const characters = require('./characters.json');
+const axios = require('axios');
+const { URL_API } = require('../config/envs');
 
 module.exports = {
-  list: () => {
-    return characters;
+  list: async () => {
+    const { data } = await axios.get(URL_API);
+    return data;
   },
-  create: async () => {
-    throw Error('hay un error al momento de crear el personaje');
+  get: async (id) => {
+    const { data } = await axios.get(`${URL_API}/${id}`);
+    return data;
+  },
+  create: async (character) => {
+    await axios.post(URL_API, character);
+    return 'Documento creado con éxito';
   },
 };

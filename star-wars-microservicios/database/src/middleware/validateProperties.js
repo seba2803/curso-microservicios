@@ -29,7 +29,7 @@ module.exports = (req, res, next) => {
       // keys del esquema Film
       const keysFilm = Object.keys(schemas.filmSchema.obj);
       // keys que comparten keysFilm y keyBody
-      const keysExist = keysSchema.filter((key) => keysBody.includes(key));
+      const keysExist = keysFilm.filter((key) => keysBody.includes(key));
 
       if (keysExist.length < keysFilm.length) {
         throw new ClientError(
@@ -41,7 +41,7 @@ module.exports = (req, res, next) => {
 
     case 'Planet':
       // keys del esquema Planet
-      const keysPlanet = Object.keys(schemas.characterSchema.obj);
+      const keysPlanet = Object.keys(schemas.planetSchema.obj);
       // keys que comparten keysPlanet y keyBody
       const keys = keysPlanet.filter((key) => keysBody.includes(key));
 
